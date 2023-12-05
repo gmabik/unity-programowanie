@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class treescript : MonoBehaviour
 {
-    float hp = 100f;
+    public float hp = 100f;
     public GameObject deadTree;
     public void GetDamaged(float damage)
     {

@@ -17,12 +17,20 @@ public class player : MonoBehaviour
     [SerializeField] private float sensitivity;
     [SerializeField] private Camera mainCam;
     private CharacterController controller;
+
     [Header("Misc")]
     public float damage;
+    public int treeCuttingLVL;
+    private float treeCuttingEXP;
+    private float treeCuttingEXPReq;
     void Start()
     {
         controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
+        treeCuttingLVL = PlayerPrefs.GetInt("treeCuttingLVL", 1);
+        treeCuttingEXP = PlayerPrefs.GetFloat("treeCuttingEXP", 0f);
+        treeCuttingEXPReq = treeCuttingLVL * 5 + treeCuttingLVL;
+        damage = 5 * treeCuttingLVL;
     }
 
     void Update()
@@ -47,5 +55,19 @@ public class player : MonoBehaviour
 
         //moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void GetExp(float currentDamage)
+    {
+        treeCuttingEXP += currentDamage * Random.Range(1.5f, 4f);
+        if (treeCuttingEXP >= treeCuttingEXPReq)
+        {
+            treeCuttingEXP -= treeCuttingEXPReq;
+            treeCuttingLVL += 1;
+            treeCuttingEXPReq = treeCuttingLVL * 5 + treeCuttingLVL;
+            damage = 5 * treeCuttingLVL;
+        }
+        PlayerPrefs.SetInt("treeCuttingLVL", treeCuttingLVL);
+        PlayerPrefs.SetFloat("treeCuttingEXP", treeCuttingEXP);
     }
 }
