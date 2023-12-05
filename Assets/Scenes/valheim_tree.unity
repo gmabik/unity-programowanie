@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d6af3ad07c9624f97d7ddb6a1994f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
   deadTree: {fileID: 8510846549087667953, guid: 1bde968206233e54893d353e5ac70fc2, type: 3}
 --- !u!1 &990868484
 GameObject:
@@ -275,6 +276,7 @@ MonoBehaviour:
   sensitivity: 3
   mainCam: {fileID: 2067162130}
   damage: 50
+  treeCuttingLVL: 0
 --- !u!143 &1422002491
 CharacterController:
   m_ObjectHideFlags: 0
@@ -560,6 +562,10 @@ PrefabInstance:
     - target: {fileID: 1365685005921119207, guid: 6ff00dace48849846893e62caefa0e80, type: 3}
       propertyPath: m_TagString
       value: tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2045411169026372480, guid: 6ff00dace48849846893e62caefa0e80, type: 3}
+      propertyPath: interactCD
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3688079473863833283, guid: 6ff00dace48849846893e62caefa0e80, type: 3}
       propertyPath: m_RootOrder
