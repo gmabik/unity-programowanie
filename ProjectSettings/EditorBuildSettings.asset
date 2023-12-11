@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: e21a6f8364883a34c81b6552084544bd
+  - enabled: 1
+    path: Assets/Scenes/LoadingScreen.unity
+    guid: 40882fae954490642b2088feda562552
+  - enabled: 1
+    path: Assets/Scenes/valheim_tree.unity
+    guid: 78991ba93887f454a96fe568ffdc03db
   m_configObjects: {}
