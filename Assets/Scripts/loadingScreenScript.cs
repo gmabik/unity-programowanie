@@ -11,6 +11,9 @@ public class loadingScreenScript : MonoBehaviour
     private AsyncOperation asyncOperation;
     public bool haveChosenColor = false;
     public Color chosenColor;
+    public float timeToLoad;
+    public float currentTimeToLoad = 0f;
+    public playerConfig playerConfig1;
     void Start()
     {
         asyncOperation = SceneManager.LoadSceneAsync(SceneName);
@@ -20,8 +23,10 @@ public class loadingScreenScript : MonoBehaviour
 
     void Update()
     {
-        slider.value = asyncOperation.progress;
-        if (asyncOperation.progress >= 0.9f && haveChosenColor) StartCoroutine("startScene");
+        currentTimeToLoad += Time.deltaTime;
+        if (currentTimeToLoad > timeToLoad) currentTimeToLoad = timeToLoad;
+        slider.value = asyncOperation.progress - (timeToLoad/currentTimeToLoad) + 1f;
+        if (asyncOperation.progress >= 0.9f && slider.value == slider.maxValue && haveChosenColor) StartCoroutine("startScene");
     }
 
     IEnumerator startScene()
@@ -41,6 +46,7 @@ public class loadingScreenScript : MonoBehaviour
                 chosenColor = Color.blue;
                 break;
         }
+        playerConfig1.playerColor = chosenColor;
         haveChosenColor = true;
     }
 }

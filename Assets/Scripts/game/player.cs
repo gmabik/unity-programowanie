@@ -23,6 +23,7 @@ public class player : MonoBehaviour
     public int treeCuttingLVL;
     private float treeCuttingEXP;
     private float treeCuttingEXPReq;
+    public playerConfig playerConfig1;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -31,6 +32,7 @@ public class player : MonoBehaviour
         treeCuttingEXP = PlayerPrefs.GetFloat("treeCuttingEXP", 0f);
         treeCuttingEXPReq = treeCuttingLVL * 5 + treeCuttingLVL;
         damage = 5 * treeCuttingLVL;
+        GetComponent<Renderer>().material.color = playerConfig1.playerColor;
     }
 
     void Update()
